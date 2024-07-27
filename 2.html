@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卡片生成</title>
+    <style>
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            margin: 16px;
+            padding: 16px;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 16px;
+        }
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .card-content h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .card-content p {
+            margin: 8px 0;
+            color: #555;
+        }
+        .card-content a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .category-section {
+            margin-bottom: 32px;
+        }
+        h2 {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="card-container"></div>
+
+    <script>
+        // 替换这个 URL 为你存储 JSON 数据的实际路径
+        const dataUrl = 'list.json';
+
+        fetch(dataUrl)
+            .then(response => response.json())
+            .then(data => {
+                const cardContainer = document.getElementById('card-container');
+                
+                data.category.forEach(category => {
+                    // 创建一个新 section 用于该类别
+                    const section = document.createElement('div');
+                    section.className = 'category-section';
+                    
+                    // 添加类别标题
+                    const categoryTitle = document.createElement('h2');
+                    categoryTitle.textContent = category;
+                    section.appendChild(categoryTitle);
+
+                    // 添加卡片到该类别下
+                    data[category].forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = 'card';
+                        card.innerHTML = `
+                            <img src="${item.img}" alt="${item.name}">
+                            <div class="card-content">
+                                <h3>${item.name}</h3>
+                                <p>${item.introduction}</p>
+                                <a href="http://${item.link}" target="_blank">Learn more</a>
+                            </div>
+                        `;
+                        section.appendChild(card);
+                    });
+
+                    // 将类别部分添加到主容器中
+                    cardContainer.appendChild(section);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>

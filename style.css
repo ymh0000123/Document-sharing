@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.left-menu {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.left-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.left-menu ul li {
+    margin: 15px 0;
+}
+
+.left-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+}
+
+.left-menu ul li a:hover {
+    background-color: #575757;
+}
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    flex: 1;
+}
+
+#right-content {
+    padding-top: 20px;
+}
+
+#title {
+    text-align: center;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    margin: 16px;
+    padding: 16px;
+    max-width: 300px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    opacity: 0; /* 初始状态不可见 */
+    transform: translateY(20px); /* 初始状态稍微下移 */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* 过渡效果 */
+    will-change: opacity, transform; /* 提示浏览器优化动画效果 */
+}
+
+.card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 16px;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-content h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.card-content p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.card-content a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.category-section {
+    margin-bottom: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; /* 添加间距来分隔卡片 */
+    transition: all 0.5s ease; /* 平滑过渡 */
+}
+
+h2 {
+    margin-bottom: 16px;
+}
+
+.card:nth-child(odd) {
+    animation: slideIn 0.5s ease forwards; /* 偶数卡片的动画效果 */
+}
+
+.card:nth-child(even) {
+    animation: slideInDelayed 0.5s ease forwards; /* 奇数卡片的延迟动画效果 */
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* 动画结束时回到原位置 */
+    }
+}
+
+@keyframes slideInDelayed {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* 动画结束时回到原位置 */
+    }
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* 初始状态稍微下移 */
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(10px); /* 中间状态稍微上移 */
+    }
+}
+
+@media (max-width: 1350px) {
+    .card {
+        flex: 1 1 calc(33.333% - 16px); /* 三列布局 */
+    }
+}
+
+@media (max-width: 1080px) {
+    .card {
+        flex: 1 1 calc(50% - 16px); /* 两列布局 */
+    }
+}
+
+@media (max-width: 900px) {
+    .card {
+        flex: 1 1 100%; /* 单列布局 */
+    }
+}

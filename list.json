@@ -1,0 +1,19 @@
+{
+    "category": [
+        "1",
+        "awa"
+    ],
+    "1": [
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"},
+        {"name":"1","introduction":"qwq","link":"example.com","img":"./6.webp"}
+    ],
+    "awa": [
+        {"name":"1","introduction":"awa","link":"example.com","img":"./6.webp"}
+    ]
+}
