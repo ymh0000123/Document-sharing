@@ -29,7 +29,7 @@ function list() {
                                     <div class="card-content">
                                         <h3>${item.name}</h3>
                                         <p>${item.introduction}</p>
-                                        <a href="http://${item.link}" target="_blank">Learn more</a>
+                                        <a href="${item.link}" target="_blank">查看</a>
                                     </div>
                                 `;
                                 section.appendChild(card);
